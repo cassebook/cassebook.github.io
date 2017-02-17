@@ -7,7 +7,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> {{site.title}}</span></a>
+            <a class="fa fa-lg navbar-brand" href="index.html">
+	      <img src="{{ site.baseurl }}/images/emblem.png" width="60" height="40" alt="{{ site.title }} logo">
+&nbsp;<span class="projectTitle"> {{site.title}}</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -74,46 +76,3 @@
 </nav>
 
 
-		<header>
-			<h1>
-				<a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/emblem.png" width="60" height="40" alt="{{ site.title }} logo"></a>
-				{{ site.title }}
-				<button type="button" class="open-nav" id="open-nav"></button>
-			</h1>
-
-			<form action="{{ site.baseurl }}/search/" method="get">
-				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
-				<input type="submit" value="Search" style="display: none;">
-			</form>
-
-			<nav {% if site.show_full_navigation %}class="full-navigation"{% endif %}>
-				<ul>
-					<li class="nav-item top-level {% if page.url == '/' %}current{% endif %}">
-						{% assign home = site.html_pages | where: 'url', '/' | first %}
-						<a href="{{ site.baseurl }}/">{{ home.title }}</a>
-					</li>
-				</ul>
-
-				<ul>
-					{% assign grouped = site.docs | group_by: 'category' %}
-					{% for group in grouped %}
-						<li class="nav-item top-level {% if group.name == page.category %}current{% endif %}">
-							{% assign items = group.items | sort: 'order' %}
-							<a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name }}</a>
-							<ul>
-								{% for item in items %}
-									<li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
-								{% endfor %}
-							</ul>
-						</li>
-					{% endfor %}
-				</ul>
-
-				<ul>
-					<li class="nav-item top-level {% if page.url == '/changelog/' %}current{% endif %}">
-						{% assign changelog = site.html_pages | where: 'url', '/changelog/' | first %}
-						<a href="{{ site.baseurl }}/changelog/">{{ changelog.title }}</a>
-					</li>
-				</ul>
-			</nav>
-		</header>

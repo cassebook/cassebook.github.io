@@ -2,8 +2,7 @@
 # Site
 
 title: Computational Analysis of Sound Scenes and Events
-url: "http://github.com/cassebook"
-baseurl: "/~dpwe/tmp/cassebook/_site"
+url: "http://cassebook.github.io/"
 google_analytics_key:
 show_full_navigation: true
 
