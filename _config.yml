@@ -1,0 +1,73 @@
+# ----
+# Site
+
+title: Computational Analysis of Sound Scenes and Events
+url: "http://github.com/cassebook"
+baseurl: "/~dpwe/tmp/cassebook/_site"
+google_analytics_key:
+show_full_navigation: true
+
+# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+logo: /siteicon.png
+description: Companion website for the book Computational Analysis of Sound Scenes and Events
+author: 
+  name: Tuomas Virtanen, Mark Plumbley, Dan Ellis (eds)
+  email: tuomas.virtanen@tut.fi
+  twitter: # twitter username without the @ symbol
+social:
+  name: 
+  links:
+    - https://github.com/cassebook
+
+# -----
+# Build
+
+permalink: pretty
+
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENCE
+
+collections:
+  docs:
+    title: Chapters
+    permalink: /:path/
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      seo:
+        type: Article
+      _comments:
+        category: Group navigation links with this field
+        order: Used to sort links in the navigation
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      _comments:
+        type: Marks the impact of this release
+
+# -----------
+# CloudCannon
+
+types:
+  - minor
+  - major
