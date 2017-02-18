@@ -25,6 +25,9 @@ def proc(arg):
     </tr>
 </table>
 
+You can see the raw text source for this file on 
+[GitHub](https://raw.githubusercontent.com/cassebook/cassebook.github.io/master/_docs/ch01/index.md).
+
 ## Example code
 
 You can also include linked files: 
