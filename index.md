@@ -1,5 +1,5 @@
 ---
-category: Contents
+title: Contents
 ---
 
 **Computational Analysis of Sound Scenes and Events**
