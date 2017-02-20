@@ -1,5 +1,5 @@
 ---
-title: Acoustic features
+title: Acoustic Features for Environmental Sound Analysis
 authors: Romain Serizel, Victor Bisot, Slim Essid, and Gael Richard
 category: Chapter  4
 order: 1
