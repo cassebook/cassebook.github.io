@@ -15,11 +15,12 @@ View the [Python source code for Figure 8.4]({{ site.url }}/code/ch08/fig8_4_edh
 
 ## Figure 8.6: NMF decomposition example
 
-Download the [Matlab source code for Figure 8.6]({{ site.url }}/code/ch08/fig8_6_nmf_example.m).
-To run it, you will need the following two audio recordings: [alarm44.wav]({{ site.url }}/code/ch08/alarm44.wav) and [doorslam006.wav]({{ site.url }}/code/ch08/doorslam006.wav).
+View the [Matlab source code for Figure 8.6]({{ site.url }}/code/ch08/fig8_6_nmf_example.m.html)
+([download]({{ site.url }}/code/ch08/fig8_6_nmf_example.m)).
+To run it, you will need the following two audio recordings: [alarm44.wav]({{ site.url }}/data/ch08/alarm44.wav) and [doorslam006.wav]({{ site.url }}/data/ch08/doorslam006.wav).
 
 
 ## Chapter 8 References
 
-Download the [BibTeX file]({{ site.url }}/_docs/ch08/chap08.bib) containing references for Chapter 8.
+Download the [BibTeX file]({{ site.url }}/data/ch08/chap08.bib) containing references for Chapter 8.
 

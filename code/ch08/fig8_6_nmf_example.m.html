@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="c">% CASSE book Chapter 8, Approaches to Complex Sound Scene Analysis</span>
+<span class="c">% Figure 8.6 - NMF decomposition of an artificial sound scene</span>
+
+<span class="c">% Prerequisites:</span>
+<span class="c">% NMFLib toolbox: http://www.ee.columbia.edu/~grindlay/code.html</span>
+
+<span class="c">% Emmanouil Benetos 2016</span>
+
+
+<span class="c">% Read alarm and doorslam audio recordings, construct artificial sequence</span>
+<span class="p">[</span><span class="n">x1</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;alarm44.wav&#39;</span><span class="p">);</span>
+<span class="p">[</span><span class="n">x2</span><span class="p">,</span><span class="n">fs2</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;doorslam006.wav&#39;</span><span class="p">);</span>
+<span class="n">x3</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">200000</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">x3</span><span class="p">(</span><span class="mi">10000</span><span class="p">:</span><span class="mi">10000</span><span class="o">+</span><span class="mi">154800</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">154800</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">);</span>
+<span class="n">x3</span><span class="p">(</span><span class="mi">170000</span><span class="p">:</span><span class="mi">170000</span><span class="o">+</span><span class="nb">length</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">x2</span><span class="p">;</span>
+
+
+<span class="c">% Compute ERB spectrogram, initialise dictionary templates and run NMF</span>
+<span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="p">=</span> <span class="n">computeERB</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span>
+<span class="n">W1</span> <span class="p">=</span> <span class="n">X</span><span class="p">(:,</span><span class="mi">29</span><span class="p">);</span>
+<span class="n">W2</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">(:,</span><span class="mi">168</span><span class="p">:</span><span class="mi">176</span><span class="p">)</span><span class="o">&#39;</span><span class="p">);</span>
+<span class="n">W</span> <span class="p">=</span> <span class="p">[</span><span class="n">W1</span> <span class="n">W2</span><span class="o">&#39;</span><span class="p">];</span>
+<span class="n">W0</span><span class="p">=</span><span class="n">W</span><span class="p">;</span>
+<span class="p">[</span><span class="n">w1</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">errs</span><span class="p">,</span><span class="n">vout</span><span class="p">]</span> <span class="p">=</span> <span class="n">nmf_beta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">&#39;W0&#39;</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="s">&#39;W&#39;</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="s">&#39;niter&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;verb&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="s">&#39;beta&#39;</span><span class="p">,</span><span class="mf">0.6</span><span class="p">);</span>
+
+
+<span class="c">% Plot spectrogram and NMF outputs</span>
+<span class="n">figure</span><span class="p">;</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]);</span>
+<span class="n">imagesc</span><span class="p">(</span><span class="n">X</span><span class="p">);</span> <span class="n">axis</span> <span class="n">xy</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;(a)&#39;</span><span class="p">);</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;frequency bin&#39;</span><span class="p">);</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;time (sec)&#39;</span><span class="p">);</span>
+<span class="n">xticklabels</span><span class="p">({</span><span class="s">&#39;0.4&#39;</span><span class="p">,</span><span class="s">&#39;0.8&#39;</span><span class="p">,</span><span class="s">&#39;1.2&#39;</span><span class="p">,</span><span class="s">&#39;1.6&#39;</span><span class="p">,</span><span class="s">&#39;2.0&#39;</span><span class="p">,</span><span class="s">&#39;2.4&#39;</span><span class="p">,</span><span class="s">&#39;2.8&#39;</span><span class="p">,</span><span class="s">&#39;3.2&#39;</span><span class="p">,</span><span class="s">&#39;3,6&#39;</span><span class="p">});</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">W</span><span class="o">&#39;</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;(b)&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;k&#39;</span><span class="p">);</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;frequency bin&#39;</span><span class="p">);</span>
+<span class="n">yticks</span><span class="p">([</span><span class="mf">0.5</span> <span class="mf">2.5</span><span class="p">]);</span>
+<span class="n">yticklabels</span><span class="p">({</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="s">&#39;2&#39;</span><span class="p">})</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">multiplot</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;(c)&#39;</span><span class="p">);</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;time (sec)&#39;</span><span class="p">);</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;k&#39;</span><span class="p">);</span>
+<span class="n">xticks</span><span class="p">(</span><span class="mi">20</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">180</span><span class="p">);</span>
+<span class="n">xticklabels</span><span class="p">({</span><span class="s">&#39;0.4&#39;</span><span class="p">,</span><span class="s">&#39;0.8&#39;</span><span class="p">,</span><span class="s">&#39;1.2&#39;</span><span class="p">,</span><span class="s">&#39;1.6&#39;</span><span class="p">,</span><span class="s">&#39;2.0&#39;</span><span class="p">,</span><span class="s">&#39;2.4&#39;</span><span class="p">,</span><span class="s">&#39;2.8&#39;</span><span class="p">,</span><span class="s">&#39;3.2&#39;</span><span class="p">,</span><span class="s">&#39;3,6&#39;</span><span class="p">});</span>
+<span class="n">yticks</span><span class="p">([</span><span class="mf">0.5</span> <span class="mf">2.5</span><span class="p">]);</span>
+<span class="n">yticklabels</span><span class="p">({</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="s">&#39;2&#39;</span><span class="p">})</span>
+
+
+<span class="c">%%%</span>
+
+<span class="k">function</span><span class="w"> </span>[X] <span class="p">=</span><span class="w"> </span><span class="nf">computeERB</span><span class="p">(</span>x,fs<span class="p">)</span><span class="w"></span>
+
+<span class="c">% Code for computing ERB T/F representation</span>
+<span class="c">% Adapted from code by Emmanuel Vincent:</span>
+<span class="c">% http://homepages.loria.fr/evincent/software/multipitch_tracking.m</span>
+
+
+<span class="c">% Initialize</span>
+<span class="n">nbfreq</span><span class="p">=</span><span class="mi">250</span><span class="p">;</span>
+
+
+<span class="c">% Reading WAV file</span>
+<span class="c">%[x,fs]=wavread(wavfile);</span>
+<span class="n">x</span><span class="p">=</span><span class="n">resample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">22050</span><span class="p">,</span><span class="n">fs</span><span class="p">).</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mi">22050</span><span class="p">;</span>
+<span class="p">[</span><span class="n">I</span><span class="p">,</span><span class="n">T</span><span class="p">]=</span><span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">wlen</span><span class="p">=</span><span class="mi">2</span>^<span class="nb">nextpow2</span><span class="p">(.</span><span class="mi">02</span><span class="o">*</span><span class="n">fs</span><span class="p">);</span>    <span class="c">%20 ms window length</span>
+<span class="n">N</span><span class="p">=</span><span class="nb">ceil</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">wlen</span><span class="p">);</span>
+
+
+<span class="c">% Computing ERBT coefficients and frequency scale</span>
+<span class="n">X</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="n">nbfreq</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">I</span><span class="p">);</span>
+<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">I</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">X</span><span class="p">(:,:,</span><span class="nb">i</span><span class="p">),</span><span class="n">f</span><span class="p">]=</span><span class="n">erbtm</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">,:),</span><span class="n">fs</span><span class="p">,</span><span class="n">nbfreq</span><span class="p">,</span><span class="n">wlen</span><span class="p">);</span>
+<span class="k">end</span>
+<span class="n">X</span><span class="p">=(</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">.^</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="mf">1e-18</span><span class="p">)</span><span class="o">.^</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
+<span class="n">fmin</span><span class="p">=</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">fmax</span><span class="p">=</span><span class="n">f</span><span class="p">(</span><span class="n">nbfreq</span><span class="p">);</span>
+<span class="c">%emin=9.26*log(.00437*fmin+1); emax=9.26*log(.00437*fmax+1);</span>
+<span class="c">%e=(0:nbfreq-1)*(emax-emin)/(nbfreq-1)+emin;</span>
+<span class="c">%a=.5*(nbfreq-1)/(emax-emin)*9.26*.00437*fs*exp(-e/9.26)-.5;</span>
+<span class="c">%alen=2*round(a)+1;</span>
+<span class="c">%f=f/fs;</span>
+
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>[X,f]<span class="p">=</span><span class="nf">erbtm</span><span class="p">(</span>x,fs,F,wlen<span class="p">)</span><span class="w"></span>
+
+<span class="c">% ERBTM Magnitude ERB Transform using a Hann window.</span>
+<span class="c">%</span>
+<span class="c">% [X,f]=erbtp(x,fs,F,wlen)</span>
+<span class="c">%</span>
+<span class="c">% Inputs:</span>
+<span class="c">% x: 1 x T vector containing a single-channel signal</span>
+<span class="c">% fs: sampling frequency in Hz</span>
+<span class="c">% F: number of frequency bins (the ratio between the bandwidth of each bin</span>
+<span class="c">% and the frequency difference between successive bins is constant)</span>
+<span class="c">% wlen: number of samples per frame (must be a multiple of the largest</span>
+<span class="c">% downsampling factor, typically a large power of 2)</span>
+<span class="c">%</span>
+<span class="c">% Output:</span>
+<span class="c">% X: F x N matrix containing the time-frequency magnitude (amplitude) coefficients</span>
+<span class="c">% f: F x 1 vector containing the center frequency of each frequency bin</span>
+
+<span class="c">%%% Errors and warnings %%%</span>
+<span class="k">if</span> <span class="n">nargin</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">,</span> <span class="n">error</span><span class="p">(</span><span class="s">&#39;Not enough input arguments.&#39;</span><span class="p">);</span> <span class="k">end</span>
+<span class="p">[</span><span class="n">I</span><span class="p">,</span><span class="n">T</span><span class="p">]=</span><span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="k">if</span> <span class="n">I</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">error</span><span class="p">(</span><span class="s">&#39;The input signal must be a row vector.&#39;</span><span class="p">);</span> <span class="k">end</span>
+<span class="n">N</span><span class="p">=</span><span class="nb">ceil</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">wlen</span><span class="p">);</span>
+
+<span class="c">%%% Computing ERBT coefficients %%%</span>
+<span class="n">x</span><span class="p">=</span><span class="n">hilbert</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">X</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% Determining minimum and maximum frequency</span>
+<span class="n">fmax</span><span class="p">=.</span><span class="mi">5</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span> <span class="n">fmin</span><span class="p">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">j</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">emin</span><span class="p">=</span><span class="mf">9.26</span><span class="o">*</span><span class="nb">log</span><span class="p">(.</span><span class="mi">00437</span><span class="o">*</span><span class="n">fmin</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">emax</span><span class="p">=</span><span class="mf">9.26</span><span class="o">*</span><span class="nb">log</span><span class="p">(.</span><span class="mi">00437</span><span class="o">*</span><span class="n">fmax</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">fmin</span><span class="p">=</span><span class="mf">1.5</span><span class="o">*</span><span class="p">(</span><span class="n">emax</span><span class="o">-</span><span class="n">emin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mf">9.26</span><span class="o">/</span><span class="p">.</span><span class="mi">00437</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="n">emin</span><span class="o">/</span><span class="mf">9.26</span><span class="p">);</span>
+    <span class="n">fmax</span><span class="p">=.</span><span class="mi">5</span><span class="o">*</span><span class="n">fs</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="p">(</span><span class="n">emax</span><span class="o">-</span><span class="n">emin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mf">9.26</span><span class="o">/</span><span class="p">.</span><span class="mi">00437</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="n">emax</span><span class="o">/</span><span class="mf">9.26</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fmax</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">fmin</span> <span class="o">&gt;</span> <span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="n">fs</span><span class="p">),</span> <span class="n">error</span><span class="p">(</span><span class="s">&#39;The number of frequency bins is too small.&#39;</span><span class="p">);</span> <span class="k">end</span>
+<span class="k">end</span>
+<span class="c">% Determining frequency and window length scales</span>
+<span class="n">emin</span><span class="p">=</span><span class="mf">9.26</span><span class="o">*</span><span class="nb">log</span><span class="p">(.</span><span class="mi">00437</span><span class="o">*</span><span class="n">fmin</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">emax</span><span class="p">=</span><span class="mf">9.26</span><span class="o">*</span><span class="nb">log</span><span class="p">(.</span><span class="mi">00437</span><span class="o">*</span><span class="n">fmax</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">e</span><span class="p">=(</span><span class="mi">0</span><span class="p">:</span><span class="n">F</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">emax</span><span class="o">-</span><span class="n">emin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">emin</span><span class="p">;</span>
+<span class="n">f</span><span class="p">=(</span><span class="nb">exp</span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="mf">9.26</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">.</span><span class="mi">00437</span><span class="p">;</span>
+<span class="n">a</span><span class="p">=.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">emax</span><span class="o">-</span><span class="n">emin</span><span class="p">)</span><span class="o">*</span><span class="mf">9.26</span><span class="o">*</span><span class="p">.</span><span class="mi">00437</span><span class="o">*</span><span class="n">fs</span><span class="o">*</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">e</span><span class="o">/</span><span class="mf">9.26</span><span class="p">)</span><span class="o">-</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
+<span class="c">% Determining dyadic downsampling bins (for fast computation)</span>
+<span class="n">fup</span><span class="p">=</span><span class="n">f</span><span class="o">+</span><span class="mf">1.5</span><span class="o">*</span><span class="n">fs</span><span class="o">./</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">subs</span><span class="p">=</span><span class="o">-</span><span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">fup</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">/</span><span class="nb">log</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">subs</span><span class="p">=</span><span class="mf">2.</span>^<span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">floor</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="nb">log2</span><span class="p">(</span><span class="n">wlen</span><span class="p">),</span><span class="n">subs</span><span class="p">)));</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">wlen</span><span class="o">/</span><span class="n">subs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">~=</span> <span class="nb">floor</span><span class="p">(</span><span class="n">wlen</span><span class="o">/</span><span class="n">subs</span><span class="p">(</span><span class="mi">1</span><span class="p">))),</span> <span class="n">error</span><span class="p">([</span><span class="s">&#39;The number of samples per frame must be a multiple of &#39;</span> <span class="n">int2str</span><span class="p">(</span><span class="n">subs</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="s">&#39;.&#39;</span><span class="p">]);</span> <span class="k">end</span>
+<span class="n">down</span><span class="p">=(</span><span class="n">subs</span><span class="o">~=</span><span class="p">[</span><span class="n">subs</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">),</span><span class="mi">1</span><span class="p">]);</span>
+<span class="k">for</span> <span class="n">bin</span><span class="p">=</span><span class="n">F</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="c">% Dyadic downsampling</span>
+    <span class="k">if</span> <span class="n">down</span><span class="p">(</span><span class="n">bin</span><span class="p">),</span>
+        <span class="n">x</span><span class="p">=</span><span class="n">resample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+    <span class="k">end</span>
+    <span class="c">% Convolution with a modulated sine window</span>
+    <span class="n">hwlen</span><span class="p">=</span><span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">bin</span><span class="p">)</span><span class="o">/</span><span class="n">subs</span><span class="p">(</span><span class="n">bin</span><span class="p">));</span>
+    <span class="n">win</span><span class="p">=</span><span class="n">hanning</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">hwlen</span><span class="o">+</span><span class="mi">1</span><span class="p">).</span><span class="o">&#39;.*</span><span class="nb">exp</span><span class="p">(</span><span class="mi">2</span><span class="nb">i</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">bin</span><span class="p">)</span><span class="o">/</span><span class="n">fs</span><span class="o">*</span><span class="n">subs</span><span class="p">(</span><span class="n">bin</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">hwlen</span><span class="p">:</span><span class="n">hwlen</span><span class="p">));</span>
+    <span class="n">band</span><span class="p">=[</span><span class="n">fftfilt</span><span class="p">(</span><span class="n">win</span><span class="p">,[</span><span class="n">x</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">hwlen</span><span class="p">)])</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">wlen</span><span class="o">/</span><span class="n">subs</span><span class="p">(</span><span class="n">bin</span><span class="p">))];</span>
+    <span class="c">% Square-root energy on short time frames</span>
+    <span class="n">band</span><span class="p">=</span><span class="n">band</span><span class="p">(</span><span class="n">hwlen</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">hwlen</span><span class="o">+</span><span class="n">N</span><span class="o">*</span><span class="n">wlen</span><span class="o">/</span><span class="n">subs</span><span class="p">(</span><span class="n">bin</span><span class="p">));</span>
+    <span class="n">X</span><span class="p">(</span><span class="n">bin</span><span class="p">,:)=</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="nb">reshape</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">band</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">,</span><span class="n">wlen</span><span class="o">/</span><span class="n">subs</span><span class="p">(</span><span class="n">bin</span><span class="p">),</span><span class="n">N</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">hwlen</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>^<span class="mi">2</span><span class="o">*</span><span class="n">subs</span><span class="p">(</span><span class="n">bin</span><span class="p">));</span>
+<span class="k">end</span>
+
+<span class="k">return</span><span class="p">;</span>
+
+<span class="k">end</span>
+
+
+<span class="c">%%%</span>
+
+
+<span class="k">function</span><span class="w"> </span><span class="nf">multiplot</span><span class="p">(</span> x, sz<span class="p">)</span><span class="w"></span>
+<span class="c">% Plot multiple vectors into one compact plot</span>
+
+<span class="c">% Paris Smaragdis, 2007, paris@media.mit.edu</span>
+
+<span class="c">% Cellify</span>
+<span class="k">if</span> <span class="o">~</span><span class="n">iscell</span><span class="p">(</span> <span class="n">x</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="n">X</span><span class="p">{</span><span class="nb">i</span><span class="p">}</span> <span class="p">=</span> <span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">,:);</span>
+	<span class="k">end</span>
+	<span class="n">x</span> <span class="p">=</span> <span class="n">X</span><span class="p">;</span>
+<span class="k">end</span>
+<span class="n">n</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span> <span class="n">x</span><span class="p">);</span>
+
+<span class="c">% Default arrangement</span>
+<span class="k">if</span> <span class="o">~</span><span class="n">exist</span><span class="p">(</span> <span class="s">&#39;sz&#39;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">15</span>
+		<span class="n">sz</span> <span class="p">=</span> <span class="nb">ceil</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span> <span class="nb">length</span><span class="p">(</span> <span class="n">x</span><span class="p">)))</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span><span class="p">];</span>
+	<span class="k">else</span>
+		<span class="n">sz</span> <span class="p">=</span> <span class="p">[</span><span class="n">n</span> <span class="mi">1</span><span class="p">];</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c">% Find proper scaling</span>
+<span class="n">mx</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+	<span class="n">mx</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span> <span class="n">mx</span><span class="p">,</span> <span class="n">max</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span> <span class="n">x</span><span class="p">{</span><span class="nb">i</span><span class="p">})));</span>
+<span class="k">end</span>
+
+<span class="c">% Plot them</span>
+<span class="n">cla</span> <span class="n">reset</span>
+<span class="n">l</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span> <span class="n">x</span><span class="p">{</span><span class="mi">1</span><span class="p">});</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+	<span class="n">r</span> <span class="p">=</span> <span class="nb">mod</span><span class="p">(</span> <span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">sz</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+	<span class="n">c</span> <span class="p">=</span> <span class="nb">floor</span><span class="p">(</span> <span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sz</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+	<span class="n">line</span><span class="p">(</span> <span class="n">c</span><span class="o">*</span><span class="mf">1.1</span><span class="o">*</span><span class="n">l</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">l</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="n">x</span><span class="p">{</span><span class="nb">i</span><span class="p">}</span><span class="o">/</span><span class="n">max</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">{</span><span class="nb">i</span><span class="p">})))</span>
+<span class="k">end</span>
+<span class="n">axis</span> <span class="n">tight</span>
+
+
+<span class="k">end</span>
+</pre></div>
+</body>
+</html>
