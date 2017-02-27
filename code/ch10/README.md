@@ -11,7 +11,7 @@ cd cassebook.github.io/code/ch10/
 
 * 2) Create python 3 virtual enviornment and activate it
 ```
-python3 -m venv /env
+python3 -m venv env
 source env/bin/activate
 ```
 
