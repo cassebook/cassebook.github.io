@@ -1,0 +1,9 @@
+env
+.env
+.DS_Store
+files/
+text_index/
+database.csv
+.ipynb_checkpoints/
+freesound_apikey.py
+__pycache__
