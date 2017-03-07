@@ -15,7 +15,7 @@ References for Chapter 11 are listed below. You can also download them as a [Bib
 <!-- This document was automatically generated with bibtex2html 1.98
      (see http://www.lri.fr/~filliatr/bibtex2html/),
      with the following command:
-     /usr/bin/bibtex2html -nobibsource chap11.bib  -->
+     /usr/bin/bibtex2html -nobibsource ../../data/ch11/chap11.bib  -->
 
 
 <table>
@@ -281,7 +281,8 @@ Nocturnal burrow-nesting seabirds breeding on isolated oceanic islands pose chal
 <td class="bibtexitem">
 Michael&nbsp;A Casey and Malcolm Slaney.
  Song intersection by approximate nearest neighbor search.
- In <em>ISMIR</em>, volume&nbsp;6, pages 144--149, 2006.
+ In <em>Proceedings of the International Symposium on Music
+  Information Retrieval (ISMIR)</em>, volume&nbsp;6, pages 144--149, 2006.
 [&nbsp;<a href="http://dx.doi.org/">DOI</a>&nbsp;]
 <blockquote><font size="-1">
 We present new methods for computing inter-song similarities using intersections between multiple audio pieces. The intersection contains portions that are similar, when one song is a derivative work of the other for example, in two different musical recordings. To scale our search to large song databases we have developed an algorithm based on locality-sensitive hashing (LSH) of sequences of audio features called audio shingles. LSH provides an efficient means to identify approximate nearest neighbors in a high-dimensional feature space. We combine these nearest neighbor estimates, each a match from a very large database of audio to a small portion of the query song, to form a measure of the approximate similarity. We demonstrate the utility of our methods on a derivative works retrieval experiment using both exact and approximate (LSH) methods. The results show that LSH is at least an order of magnitude faster than the exact nearest neighbor method and that accuracy is not impacted by the approximate method.
@@ -1036,13 +1037,32 @@ A field test was conducted on the accuracy of an eight-microphone acoustic locat
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Mercado:2016">52</a>]
+[<a name="Menze:2017">52</a>]
+</td>
+<td class="bibtexitem">
+Sebastian Menze, Daniel&nbsp;P. Zitterbart, Ilse van Opzeeland, and Olaf Boebel.
+ The influence of sea ice, wind speed and marine mammals on southern
+  ocean ambient sound.
+ <em>Royal Society Open Science</em>, 4(1):160370, jan 2017.
+[&nbsp;<a href="http://dx.doi.org/10.1098/rsos.160370">DOI</a>&nbsp;| 
+<a href="https://doi.org/10.1098%2Frsos.160370">http</a>&nbsp;]
+<blockquote><font size="-1">
+This paper describes the natural variability of ambient sound in the Southern Ocean, an acoustically pristine marine mammal habitat. Over a 3-year period, two autonomous recorders were moored along the Greenwich meridian to collect underwater passive acoustic data. Ambient sound levels were strongly affected by the annual variation of the sea-ice cover, which decouples local wind speed and sound levels during austral winter. With increasing sea-ice concentration, area and thickness, sound levels decreased while the contribution of distant sources increased. Marine mammal sounds formed a substantial part of the overall acoustic environment, comprising calls produced by Antarctic blue whales (Balaenoptera musculus intermedia), fin whales (Balaenoptera physalus), Antarctic minke whales (Balaenoptera bonaerensis) and leopard seals (Hydrurga leptonyx). The combined sound energy of a group or population vocalizing during extended periods contributed species-specific peaks to the ambient sound spectra. The temporal and spatial variation in the contribution of marine mammals to ambient sound suggests annual patterns in migration and behaviour. The Antarctic blue and fin whale contributions were loudest in austral autumn, whereas the Antarctic minke whale contribution was loudest during austral winter and repeatedly showed a diel pattern that coincided with the diel vertical migration of zooplankton.
+</font></blockquote>
+<p>
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="Mercado:2016">53</a>]
 </td>
 <td class="bibtexitem">
 Eduardo Mercado III and Christopher&nbsp;B. Sturdy.
  Classifying animal sounds with neural networks.
- In C.&nbsp;H. Brown and T.&nbsp;Riede, editors, <em>Comparative Bioacoustic
-  Methods eBook</em>, chapter&nbsp;10. Bentham Science Publishers, Oak Park, IL, USA,
+ In C.&nbsp;H. Brown and T.&nbsp;Riede, editors, <em>Comparative Bioacoustics:
+  An Overview</em>, chapter&nbsp;10. Bentham Science Publishers, Oak Park, IL, USA,
   2016.
 <blockquote><font size="-1">
 Humans naturally classify the sounds they hear into different categories, including sounds produced by animals. Bioacousticians have supplemented this type of subjective sorting with quantitative analyses of acoustic features of animal sounds. Using neural networks to classify animal sounds extends this process one step further by not only facilitating objective descriptive analyses of animal sounds, but also by making it possible to simulate auditory classification processes. Critical aspects of developing a neural network include choosing a particular architecture, converting measurements into input representations, and training the network to recognize inputs. When the goal is to sort vocalizations into specific types, supervised learning algorithms make it possible for a neural network to do so with high accuracy and speed. When the goal is to sort vocalizations based on similarities between measured properties, unsupervised learning algorithms can be used to create neural networks that objectively sort sounds or that quantify sequential properties of sequences of sounds. Neural networks can also provide insights into how animals might themselves classify the sounds they hear, and be useful in developing specific testable hypotheses about the functions of different sounds. The current chapter illustrates each of these applications of neural networks in bioacoustics studies of the sounds produced by chickadees (Poecile atricapillus), false killer whales (Pseudoorca crassidens), and humpback whales (Megaptera novaeangliae).
@@ -1054,7 +1074,7 @@ Humans naturally classify the sounds they hear into different categories, includ
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Montavon:2012">53</a>]
+[<a name="Montavon:2012">54</a>]
 </td>
 <td class="bibtexitem">
 G.&nbsp;Montavon, G.&nbsp;Orr, and K.-R. M&uuml;ller, editors.
@@ -1067,7 +1087,7 @@ G.&nbsp;Montavon, G.&nbsp;Orr, and K.-R. M&uuml;ller, editors.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Mporas:2012">54</a>]
+[<a name="Mporas:2012">55</a>]
 </td>
 <td class="bibtexitem">
 Iosif Mporas, Todor Ganchev, Otilia Kocsis, Nikos Fakotakis, Olaf Jahn, Klaus
@@ -1087,7 +1107,7 @@ We report on a recent progress with the development of an automated bioacoustic 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Murphy:2002">55</a>]
+[<a name="Murphy:2002">56</a>]
 </td>
 <td class="bibtexitem">
 Kevin&nbsp;P Murphy and Mark&nbsp;A Paskin.
@@ -1105,7 +1125,7 @@ The hierarchical hidden Markov model (HHMM) is a generalization of the hidden Ma
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Murphy:2012">56</a>]
+[<a name="Murphy:2012">57</a>]
 </td>
 <td class="bibtexitem">
 K.&nbsp;P. Murphy.
@@ -1122,7 +1142,7 @@ K.&nbsp;P. Murphy.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Padgham:2004">57</a>]
+[<a name="Padgham:2004">58</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Padgham.
@@ -1140,7 +1160,7 @@ Rates of reverberative decay and frequency attenuation are measured within two A
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Perez:2015">58</a>]
+[<a name="Perez:2015">59</a>]
 </td>
 <td class="bibtexitem">
 E.&nbsp;C. Perez, M.&nbsp;S.&nbsp;A. Fernandez, S.&nbsp;C. Griffith, C.&nbsp;Vignal, and H.&nbsp;A. Soula.
@@ -1158,7 +1178,7 @@ Animal social interactions usually revolve around several sensory modalities. Fo
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Pieretti:2011">59</a>]
+[<a name="Pieretti:2011">60</a>]
 </td>
 <td class="bibtexitem">
 Nadia Pieretti, Almo Farina, and Davide Morri.
@@ -1176,7 +1196,7 @@ The animal soundscape is a field of growing interest because of the implications
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Podos:2016">60</a>]
+[<a name="Podos:2016">61</a>]
 </td>
 <td class="bibtexitem">
 Jeffrey Podos, Dana&nbsp;L Moseley, Sarah&nbsp;E Goodwin, Jesse McClure, Benjamin&nbsp;N Taft,
@@ -1195,7 +1215,7 @@ Our understanding of the evolution and function of animal displays has been adva
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Ptacek:2016">61</a>]
+[<a name="Ptacek:2016">62</a>]
 </td>
 <td class="bibtexitem">
 Ladislav Ptacek, Lukas Machlica, Pavel Linhart, Pavel Jaska, and Ludek Muller.
@@ -1213,7 +1233,7 @@ The most common method used to determine the identity of an individual bird is t
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Ranft:2004">62</a>]
+[<a name="Ranft:2004">63</a>]
 </td>
 <td class="bibtexitem">
 R.&nbsp;Ranft.
@@ -1231,7 +1251,7 @@ Recordings of wild animals were first made in the Palearctic in 1900, in the Nea
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Ren:2009">63</a>]
+[<a name="Ren:2009">64</a>]
 </td>
 <td class="bibtexitem">
 Y.&nbsp;Ren, M.T. Johnson, P.J. Clemins, M.&nbsp;Darre, S.S. Glaeser, T.S. Osiejuk, and
@@ -1250,7 +1270,7 @@ Using Hidden Markov Models (HMMs) as a recognition framework for automatic class
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Ross:2013">64</a>]
+[<a name="Ross:2013">65</a>]
 </td>
 <td class="bibtexitem">
 J.&nbsp;C. Ross and P.&nbsp;E. Allen.
@@ -1268,7 +1288,7 @@ Passive acoustic monitoring often leads to large quantities of sound data which 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="RSPB:2013">65</a>]
+[<a name="RSPB:2013">66</a>]
 </td>
 <td class="bibtexitem">
 The state of nature in the UK and its overseas territories.
@@ -1281,7 +1301,7 @@ The state of nature in the UK and its overseas territories.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Ruiz:2016">66</a>]
+[<a name="Ruiz:2016">67</a>]
 </td>
 <td class="bibtexitem">
 JF&nbsp;Ruiz-Mu&ntilde;oz, Zeyu You, Raviv Raich, and Xiaoli&nbsp;Z Fern.
@@ -1299,7 +1319,7 @@ This paper deals with the application of the convolutive version of dictionary l
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Sandsten:2016">67</a>]
+[<a name="Sandsten:2016">68</a>]
 </td>
 <td class="bibtexitem">
 Maria Sandsten, Mareile&nbsp;Gro&szlig;e Ruse, and Martin J&ouml;nsson.
@@ -1319,7 +1339,7 @@ A novel feature set for low-dimensional signal representation, designed for clas
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Scott-Brandes:2008">68</a>]
+[<a name="Scott-Brandes:2008">69</a>]
 </td>
 <td class="bibtexitem">
 T.&nbsp;Scott&nbsp;Brandes.
@@ -1338,7 +1358,7 @@ There is a great need for increased use and further development of automated sou
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Somervuo:2006">69</a>]
+[<a name="Somervuo:2006">70</a>]
 </td>
 <td class="bibtexitem">
 P.&nbsp;Somervuo, A.&nbsp;H&auml;rma, and S.&nbsp;Fagerlund.
@@ -1358,7 +1378,7 @@ This paper is related to the development of signal processing techniques for aut
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Sonab:2016">70</a>]
+[<a name="Sonab:2016">71</a>]
 </td>
 <td class="bibtexitem">
 North American Bird Conservation Initiative.
@@ -1373,7 +1393,7 @@ North American Bird Conservation Initiative.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stein:1968">71</a>]
+[<a name="Stein:1968">72</a>]
 </td>
 <td class="bibtexitem">
 Robert&nbsp;Carrington Stein.
@@ -1387,14 +1407,13 @@ Robert&nbsp;Carrington Stein.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stoddard:2016">72</a>]
+[<a name="Stoddard:2016">73</a>]
 </td>
 <td class="bibtexitem">
 Philip&nbsp;K. Stoddard and Michael&nbsp;J. Owren.
  Filtering in bioacoustics.
- In C.&nbsp;H. Brown and T.&nbsp;Riede, editors, <em>Comparative Bioacoustic
-  Methods eBook</em>, chapter&nbsp;7. Bentham Science Publishers, Oak Park, IL, USA,
-  2016.
+ In C.&nbsp;H. Brown and T.&nbsp;Riede, editors, <em>Comparative Bioacoustics:
+  An Overview</em>, chapter&nbsp;7. Bentham Science Publishers, Oak Park, IL, USA, 2016.
 <blockquote><font size="-1">
 Working in bioacoustics requires knowledge of filtering, which is the application of frequency-dependent energy attenuation. General filter types include low-pass, high-pass, band-pass, and band-stop versions, each of which involves selecting a target frequency range, corresponding corner frequencies, and an optimized combination of attenuation slope and pass-band ripple. Filters can be constructed in either analog (hardware) or digital (software) forms, the former being necessary when converting signals between these two kinds of representations. However, the latter are more flexible, less expensive, and the more common when working with digital signals. Readily available programs allow even novice users to easily design and use digital filters. Filtering applications include removing various kinds of noise, simulating environmental degradation effects, and searching for signals embedded in noise. While easily performed, each of these applications requires some background knowledge. There is also good reason to avoid unnecessary use of filtering, as it is easy to create unintended effects. This chapter discusses these and other issues in the context of the everyday work of bioacoustics.
 </font></blockquote>
@@ -1405,7 +1424,7 @@ Working in bioacoustics requires knowledge of filtering, which is the applicatio
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stowell:2013">73</a>]
+[<a name="Stowell:2013">74</a>]
 </td>
 <td class="bibtexitem">
 D.&nbsp;Stowell and M.&nbsp;D. Plumbley.
@@ -1424,7 +1443,7 @@ We describe an inference task in which a set of timestamped event observations m
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stowell:2014b">74</a>]
+[<a name="Stowell:2014b">75</a>]
 </td>
 <td class="bibtexitem">
 D.&nbsp;Stowell and M.&nbsp;D. Plumbley.
@@ -1440,7 +1459,7 @@ D.&nbsp;Stowell and M.&nbsp;D. Plumbley.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stowell:2014">75</a>]
+[<a name="Stowell:2014">76</a>]
 </td>
 <td class="bibtexitem">
 D.&nbsp;Stowell and M.&nbsp;D. Plumbley.
@@ -1461,7 +1480,7 @@ Birdsong often contains large amounts of rapid frequency modulation (FM). It is 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stowell:2016">76</a>]
+[<a name="Stowell:2016">77</a>]
 </td>
 <td class="bibtexitem">
 D.&nbsp;Stowell, L.&nbsp;F. Gill, and D.&nbsp;Clayton.
@@ -1479,7 +1498,7 @@ Animals in groups often exchange calls, in patterns whose temporal structure may
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stowell:2016c">77</a>]
+[<a name="Stowell:2016c">78</a>]
 </td>
 <td class="bibtexitem">
 Dan Stowell, Mike Wood, Yannis Stylianou, and Herv&eacute; Glotin.
@@ -1495,7 +1514,7 @@ Many biological monitoring projects rely on acoustic detection of birds. Despite
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Stowell:2017">78</a>]
+[<a name="Stowell:2017">79</a>]
 </td>
 <td class="bibtexitem">
 D.&nbsp;Stowell, E.&nbsp;Benetos, and L.&nbsp;F. Gill.
@@ -1510,7 +1529,7 @@ D.&nbsp;Stowell, E.&nbsp;Benetos, and L.&nbsp;F. Gill.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Sueur:2008">79</a>]
+[<a name="Sueur:2008">80</a>]
 </td>
 <td class="bibtexitem">
 Jerome Sueur, Sandrine Pavoine, Olivier Hamerlynck, and Stephanie Duvail.
@@ -1527,7 +1546,7 @@ Biodiversity assessment remains one of the most difficult challenges encountered
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Sueur:2014">80</a>]
+[<a name="Sueur:2014">81</a>]
 </td>
 <td class="bibtexitem">
 J&eacute;r&ocirc;me Sueur, Almo Farina, Amandine Gasc, Nadia Pieretti, and Sandrine
@@ -1546,7 +1565,7 @@ Bioacoustics is historically a discipline that essentially focuses on individual
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Sueur:2015">81</a>]
+[<a name="Sueur:2015">82</a>]
 </td>
 <td class="bibtexitem">
 J&eacute;r&ocirc;me Sueur and Almo Farina.
@@ -1564,7 +1583,7 @@ The sounds produced by animals have been a topic of research into animal behavio
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Suzuki:2016">82</a>]
+[<a name="Suzuki:2016">83</a>]
 </td>
 <td class="bibtexitem">
 Reiji Suzuki, Shiho Matsubayashi, Kazuhiro Nakadai, and Hiroshi&nbsp;G. Okuno.
@@ -1584,7 +1603,7 @@ Auditory scene analysis is critical in observing bio-diversity and understanding
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Tchernichovski:2000">83</a>]
+[<a name="Tchernichovski:2000">84</a>]
 </td>
 <td class="bibtexitem">
 O.&nbsp;Tchernichovski, F.&nbsp;Nottebohm, C.&nbsp;E. Ho, B.&nbsp;Pesaran, and P.&nbsp;P. Mitra.
@@ -1598,7 +1617,7 @@ O.&nbsp;Tchernichovski, F.&nbsp;Nottebohm, C.&nbsp;E. Ho, B.&nbsp;Pesaran, and P
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="TerMaat:2014">84</a>]
+[<a name="TerMaat:2014">85</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Ter&nbsp;Maat, L.&nbsp;Trost, H.&nbsp;Sagunsky, S.&nbsp;Seltmann, and M.&nbsp;Gahr.
@@ -1616,7 +1635,7 @@ Unlearned calls are produced by all birds whereas learned songs are only found i
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Towsey:2012">85</a>]
+[<a name="Towsey:2012">86</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Towsey, B.&nbsp;Planitz, A.&nbsp;Nantes, J.&nbsp;Wimmer, and P.&nbsp;Roe.
@@ -1633,7 +1652,7 @@ Monitoring the natural environment is increasingly important as habit degradatio
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Towsey:2014">86</a>]
+[<a name="Towsey:2014">87</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Towsey, L.&nbsp;Zhang, M.&nbsp;Cottman-Fields, J.&nbsp;Wimmer, J.&nbsp;Zhang, and P.&nbsp;Roe.
@@ -1649,7 +1668,7 @@ M.&nbsp;Towsey, L.&nbsp;Zhang, M.&nbsp;Cottman-Fields, J.&nbsp;Wimmer, J.&nbsp;Z
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Vannoni:2009">87</a>]
+[<a name="Vannoni:2009">88</a>]
 </td>
 <td class="bibtexitem">
 E.&nbsp;Vannoni and A.G. McElligott.
@@ -1667,7 +1686,7 @@ Many studies of sexually selected vocal communication assume that calls remain s
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Vannoni:2008">88</a>]
+[<a name="Vannoni:2008">89</a>]
 </td>
 <td class="bibtexitem">
 E.&nbsp;Vannoni and A.&nbsp;G. McElligott.
@@ -1690,7 +1709,7 @@ Our study is the first to show that sexually selected vocalisations can signal s
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Ventura:2015">89</a>]
+[<a name="Ventura:2015">90</a>]
 </td>
 <td class="bibtexitem">
 T.&nbsp;M Ventura, A.&nbsp;G. de&nbsp;Oliveira, T.&nbsp;D. Ganchev, J.&nbsp;M. de&nbsp;Figueiredo, O.&nbsp;Jahn,
@@ -1710,7 +1729,7 @@ A major challenge in the automated acoustic recognition of bird species is the a
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Vincent:2012">90</a>]
+[<a name="Vincent:2012">91</a>]
 </td>
 <td class="bibtexitem">
 Emmanuel Vincent, Shoko Araki, Fabian Theis, Guido Nolte, Pau Bofill, Hiroshi
@@ -1730,7 +1749,7 @@ We present the outcomes of three recent evaluation campaigns in the field of aud
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Vitter:1985">91</a>]
+[<a name="Vitter:1985">92</a>]
 </td>
 <td class="bibtexitem">
 Jeffrey&nbsp;S. Vitter.
@@ -1749,7 +1768,7 @@ We introduce fast algorithms for selecting a random sample of n records without 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Walters:2012">92</a>]
+[<a name="Walters:2012">93</a>]
 </td>
 <td class="bibtexitem">
 C.&nbsp;L. Walters, R.&nbsp;Freeman, A.&nbsp;Collen, C.&nbsp;Dietz, M.&nbsp;Brock&nbsp;Fenton, G.&nbsp;Jones,
@@ -1765,13 +1784,13 @@ C.&nbsp;L. Walters, R.&nbsp;Freeman, A.&nbsp;Collen, C.&nbsp;Dietz, M.&nbsp;Broc
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Webster:2016">93</a>]
+[<a name="Webster:2016">94</a>]
 </td>
 <td class="bibtexitem">
 Michael&nbsp;S. Webster and Gregory&nbsp;F. Budney.
  Sound archives and media specimens in the 21st century.
- In C.&nbsp;H. Brown and T.&nbsp;Riede, editors, <em>Comparative Bioacoustic
-  Methods eBook</em>, chapter&nbsp;11. Bentham Science Publishers, Oak Park, IL, USA,
+ In C.&nbsp;H. Brown and T.&nbsp;Riede, editors, <em>Comparative Bioacoustics:
+  An Overview</em>, chapter&nbsp;11. Bentham Science Publishers, Oak Park, IL, USA,
   2016.
 <blockquote><font size="-1">
 Audio recordings of birds and other animals, and also other forms of ‘biodiversity media’ (e.g., video recordings), capture the behavioral phenotype in ways that traditional museum specimens cannot, and natural history audio/media archives hold collections of recordings that span geography, time, and taxonomy. As such, these recordings can be used for a broad range of studies in ecology, evolution, and animal behavior, and newly developed tools for collecting and analyzing these recordings promise to further increase that research potential. Moreover, the digital revolution has made it easier than ever for high quality recordings to be collected and deposited in an archive, opening the door for large-scale citizen science efforts. But this potential also brings new challenges that must be met by the research community with regard to digital standards and accessibility. We recommend that researchers and other recordists deposit their materials in a suitable archive, that sound/media archives build strong partnerships with other types of natural history collections, that these archives also embrace technological advances to make their assets more accessible, and that archives and acoustic researchers harness “the power of the crowd” through crowd-sourcing and similar approaches. In doing so, sound archives and bioacoustic research will play an ever-increasing role in understanding our natural world, including responses of natural systems to human activities, in the 21st century.
@@ -1783,7 +1802,7 @@ Audio recordings of birds and other animals, and also other forms of ‘biodiver
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Wichern:2010">94</a>]
+[<a name="Wichern:2010">95</a>]
 </td>
 <td class="bibtexitem">
 G.&nbsp;Wichern, J.&nbsp;Xue, H.&nbsp;Thornburg, B.&nbsp;Mechtley, and A.&nbsp;Spanias.
@@ -1802,7 +1821,7 @@ We propose a method for characterizing sound activity in fixed spaces through se
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Wiley:1991">95</a>]
+[<a name="Wiley:1991">96</a>]
 </td>
 <td class="bibtexitem">
 R&nbsp;Haven Wiley.
@@ -1817,7 +1836,7 @@ R&nbsp;Haven Wiley.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Williams:2013">96</a>]
+[<a name="Williams:2013">97</a>]
 </td>
 <td class="bibtexitem">
 H.&nbsp;Williams, I.I. Levin, D.R. Norris, A.E.M. Newman, and N.T. Wheelwright.
@@ -1834,7 +1853,7 @@ Cultural evolution can result in changes in the prevalence not only of different
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Wilson:2016">97</a>]
+[<a name="Wilson:2016">98</a>]
 </td>
 <td class="bibtexitem">
 David&nbsp;R. Wilson, Laurene&nbsp;M. Ratcliffe, and Daniel&nbsp;J. Mennill.
@@ -1853,7 +1872,7 @@ Many animals produce sounds that overlap the sounds of others. In some animals, 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Zann:1996">98</a>]
+[<a name="Zann:1996">99</a>]
 </td>
 <td class="bibtexitem">
 R.&nbsp;A. Zann.
@@ -1870,7 +1889,7 @@ R.&nbsp;A. Zann.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="Zuidema:2013">99</a>]
+[<a name="Zuidema:2013">100</a>]
 </td>
 <td class="bibtexitem">
 Willem Zuidema.
