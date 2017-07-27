@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Simple example how to evaluate sound event detection systems.</span>
+<span class="c1">#</span>
+<span class="c1"># This example code is adapted and simplified from</span>
+<span class="c1"># sed_eval.sound_event.SegmentBasedMetrics (https://github.com/TUT-ARG/sed_eval)</span>
+<span class="c1">#</span>
+<span class="c1"># Author: Toni Heittola (toni.heittola@tut.fi)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">iteritems</span>
+
+<span class="k">def</span> <span class="nf">convert_list_to_roll</span><span class="p">(</span><span class="n">event_list</span><span class="p">,</span> <span class="n">max_offset_value</span><span class="p">,</span> <span class="n">event_label_list</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">time_resolution</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+
+    <span class="c1"># Initialize event roll with zeros</span>
+    <span class="n">event_roll</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">max_offset_value</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">event_label_list</span><span class="p">)))</span>
+
+    <span class="c1"># Fill-in event_roll</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">event_label_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_label&#39;</span><span class="p">])</span>
+
+        <span class="n">onset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_onset&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">))</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">))</span>
+
+        <span class="n">event_roll</span><span class="p">[</span><span class="n">onset</span><span class="p">:</span><span class="n">offset</span><span class="p">,</span> <span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">event_roll</span>
+
+<span class="n">reference</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;audio/street/a001.wav&#39;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/a001.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">estimated</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;audio/street/a001.wav&#39;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/a001.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">event_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]</span>
+
+<span class="c1"># Initialize intermediate values</span>
+<span class="n">intermediate_values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;ER&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">estimated_file</span><span class="p">,</span> <span class="n">estimated_event_list</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">estimated</span><span class="p">):</span>
+    <span class="c1"># Fetch reference event list</span>
+    <span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">reference</span><span class="p">[</span><span class="n">estimated_file</span><span class="p">]</span>
+
+    <span class="c1"># Get size of event roll</span>
+    <span class="n">max_offset_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">reference_event_list</span><span class="p">]</span> <span class="o">+</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">estimated_event_list</span><span class="p">])</span>
+
+    <span class="c1"># Generate event rolls</span>
+    <span class="n">reference_event_roll</span> <span class="o">=</span> <span class="n">convert_list_to_roll</span><span class="p">(</span>
+        <span class="n">event_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">,</span>
+        <span class="n">max_offset_value</span><span class="o">=</span><span class="n">max_offset_value</span><span class="p">,</span>
+        <span class="n">event_label_list</span><span class="o">=</span><span class="n">event_labels</span><span class="p">,</span>
+        <span class="n">time_resolution</span><span class="o">=</span><span class="mf">1.0</span>
+    <span class="p">)</span>
+    <span class="n">estimated_event_roll</span> <span class="o">=</span> <span class="n">convert_list_to_roll</span><span class="p">(</span>
+        <span class="n">event_list</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">,</span>
+        <span class="n">max_offset_value</span><span class="o">=</span><span class="n">max_offset_value</span><span class="p">,</span>
+        <span class="n">event_label_list</span><span class="o">=</span><span class="n">event_labels</span><span class="p">,</span>
+        <span class="n">time_resolution</span><span class="o">=</span><span class="mf">1.0</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Compute segment-based overall metrics, go through segment-by-segment</span>
+    <span class="k">for</span> <span class="n">segment_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">reference_event_roll</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">annotated_segment</span> <span class="o">=</span> <span class="n">reference_event_roll</span><span class="p">[</span><span class="n">segment_id</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">system_segment</span> <span class="o">=</span> <span class="n">estimated_event_roll</span><span class="p">[</span><span class="n">segment_id</span><span class="p">,</span> <span class="p">:]</span>
+
+        <span class="c1"># Calculate intermediate values</span>
+        <span class="n">Ntp</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">+</span> <span class="n">annotated_segment</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">Ntn</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">+</span> <span class="n">annotated_segment</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">Nfp</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">-</span> <span class="n">annotated_segment</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">Nfn</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">annotated_segment</span> <span class="o">-</span> <span class="n">system_segment</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Count active segments</span>
+        <span class="n">Nref</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">annotated_segment</span><span class="p">)</span>
+        <span class="n">Nsys</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span><span class="p">)</span>
+
+        <span class="c1"># Count Substitutions, Deletions, Insertions</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">Nref</span><span class="p">,</span> <span class="n">Nsys</span><span class="p">)</span> <span class="o">-</span> <span class="n">Ntp</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Nref</span> <span class="o">-</span> <span class="n">Nsys</span><span class="p">)</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Nsys</span> <span class="o">-</span> <span class="n">Nref</span><span class="p">)</span>
+
+        <span class="c1"># Accumulate intermediate values</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntp</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Ntn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntn</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nfp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfp</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nfn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfn</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nref</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nsys</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">S</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">D</span>
+        <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">I</span>
+
+<span class="c1"># Overall metrics (micro-average)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Overall metrics (micro-average)&#39;</span><span class="p">)</span>
+
+<span class="c1"># F-measure</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">])</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">])</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">f_measure</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">beta</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">precision</span><span class="o">*</span><span class="n">recall</span><span class="o">/</span><span class="p">((</span><span class="n">beta</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">precision</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;===============================&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;F-measure&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  precision         = {0:0.4} %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  recall            = {0:0.4} %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recall</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  f_measure         = {0:0.4} %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f_measure</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+
+<span class="c1"># Error rate</span>
+<span class="n">substitution_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">]))</span>
+<span class="n">deletion_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">]))</span>
+<span class="n">insertion_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">intermediate_values</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">]))</span>
+<span class="n">error_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">substitution_rate</span> <span class="o">+</span> <span class="n">deletion_rate</span> <span class="o">+</span> <span class="n">insertion_rate</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;===============================&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Error rate&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  substitution_rate = {0:0.2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">substitution_rate</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  deletion_rate     = {0:0.2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">deletion_rate</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  insertion_rate    = {0:0.2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">insertion_rate</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;  error_rate        = {0:0.2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">error_rate</span><span class="p">))</span>
+
+<span class="c1"># Overall metrics (micro-average)</span>
+<span class="c1"># ===============================</span>
+<span class="c1"># F-measure</span>
+<span class="c1">#   precision         = 100.0 %</span>
+<span class="c1">#   recall            = 44.44 %</span>
+<span class="c1">#   f_measure         = 61.54 %</span>
+<span class="c1"># ===============================</span>
+<span class="c1"># Error rate</span>
+<span class="c1">#   substitution_rate = 0.0</span>
+<span class="c1">#   deletion_rate     = 0.56</span>
+<span class="c1">#   insertion_rate    = 0.0</span>
+<span class="c1">#   error_rate        = 0.56</span>
+</pre></div>
+</body>
+</html>
