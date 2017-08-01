@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Simple example how to evaluate sound event detection systems with</span>
+<span class="c1"># sed_eval toolbox.</span>
+<span class="c1">#</span>
+<span class="c1"># Author: Toni Heittola (toni.heittola@tut.fi)</span>
+
+<span class="kn">import</span> <span class="nn">sed_eval</span>
+
+<span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">EventList</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/a001.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">estimated_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">EventList</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/a001.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize evaluators</span>
+<span class="n">segment_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">SegmentBasedMetrics</span><span class="p">(</span>
+    <span class="n">event_label_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">,</span>
+    <span class="n">time_resolution</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+<span class="n">event_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">EventBasedMetrics</span><span class="p">(</span>
+    <span class="n">event_label_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">,</span>
+    <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.20</span>
+<span class="p">)</span>
+
+<span class="c1"># Go through evaluated files file-by-file</span>
+<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_files</span><span class="p">:</span>
+    <span class="c1"># Get reference event list for file by filtering reference_event_list</span>
+    <span class="n">reference_event_list_for_current_file</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+
+    <span class="c1"># Get estimated event list for file by filtering estimated_event_list</span>
+    <span class="n">estimated_event_list_for_current_file</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+
+    <span class="c1"># Evaluate </span>
+    <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">reference_event_list</span><span class="o">=</span><span class="n">reference_event_list_for_current_file</span><span class="p">,</span>
+        <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">estimated_event_list_for_current_file</span>
+    <span class="p">)</span>
+    <span class="n">event_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">reference_event_list</span><span class="o">=</span><span class="n">reference_event_list_for_current_file</span><span class="p">,</span>
+        <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">estimated_event_list_for_current_file</span>
+    <span class="p">)</span>
+
+<span class="c1"># Print all metrics as report</span>
+<span class="k">print</span><span class="p">(</span><span class="n">segment_based_metrics</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">event_based_metrics</span><span class="p">)</span>
+
+<span class="c1"># Segment based metrics</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#     Evaluated length  : 14.5  sec</span>
+<span class="c1">#     Evaluated files   : 2     files</span>
+<span class="c1">#     Segment length    : 1.00  sec</span>
+<span class="c1">#</span>
+<span class="c1">#   Overall metrics (micro-average)</span>
+<span class="c1">#   ===============</span>
+<span class="c1">#   F-measure</span>
+<span class="c1">#     F-measure (F)     :  61.5 %</span>
+<span class="c1">#     Precision         : 100.0 %</span>
+<span class="c1">#     Recall            :  44.4 %</span>
+<span class="c1">#   Error rate</span>
+<span class="c1">#     Error rate (ER)   :  0.56</span>
+<span class="c1">#     Substitution rate :  0.00</span>
+<span class="c1">#     Deletion rate     :  0.56</span>
+<span class="c1">#     Insertion rate    :  0.00</span>
+<span class="c1">#   Accuracy</span>
+<span class="c1">#     Sensitivity       :  44.4 %</span>
+<span class="c1">#     Specificity       : 100.0 %</span>
+<span class="c1">#     Balanced accuracy :  72.2 %</span>
+<span class="c1">#     Accuracy          :  66.7 %</span>
+<span class="c1">#</span>
+<span class="c1">#   Class-wise average metrics (macro-average)</span>
+<span class="c1">#   ===============</span>
+<span class="c1">#   F-measure</span>
+<span class="c1">#     F-measure (F)     :  61.5 %</span>
+<span class="c1">#     Precision         : 100.0 %</span>
+<span class="c1">#     Recall            :  44.4 %</span>
+<span class="c1">#   Error rate</span>
+<span class="c1">#     Error rate (ER)   :  0.56</span>
+<span class="c1">#     Deletion rate     :  0.56</span>
+<span class="c1">#     Insertion rate    :  0.00</span>
+<span class="c1">#   Accuracy</span>
+<span class="c1">#     Sensitivity       :  44.4 %</span>
+<span class="c1">#     Specificity       : 100.0 %</span>
+<span class="c1">#     Balanced accuracy :  72.2 %</span>
+<span class="c1">#     Accuracy          :  66.7 %</span>
+<span class="c1">#</span>
+<span class="c1">#   Class-wise metrics</span>
+<span class="c1">#   ===============</span>
+<span class="c1">#     Event label       | Nref | Nsys |    F    :   Pre   :   Rec   |  ER   :  Del  :  Ins  |  Sens   :  Spec   :  Bacc   |   Acc   |</span>
+<span class="c1">#     ------------------+------+------+---------+---------+---------+-------+-------+-------+---------+---------+---------+---------+</span>
+<span class="c1">#     car               |    9 |    4 |  61.5 %   100.0 %    44.4 % |  0.56    0.56    0.00 |  44.4 %   100.0 %    72.2 % |  66.7 % |</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># Event based metrics (onset-offset)</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#     Evaluated length  :  14.5 sec</span>
+<span class="c1">#     Evaluated files   : 2     files</span>
+<span class="c1">#     Evaluate onset    : True</span>
+<span class="c1">#     Evaluate offset   : True</span>
+<span class="c1">#     T collar          : 200   ms</span>
+<span class="c1">#     Offset (length)   : 50    %</span>
+<span class="c1">#</span>
+<span class="c1">#   Overall metrics (micro-average)</span>
+<span class="c1">#   ===============</span>
+<span class="c1">#   F-measure</span>
+<span class="c1">#     F-measure (F)     :   0.0 %</span>
+<span class="c1">#     Precision         :   0.0 %</span>
+<span class="c1">#     Recall            :   0.0 %</span>
+<span class="c1">#   Error rate</span>
+<span class="c1">#     Error rate (ER)   :  1.67</span>
+<span class="c1">#     Substitution rate :  0.00</span>
+<span class="c1">#     Deletion rate     :  1.00</span>
+<span class="c1">#     Insertion rate    :  0.67</span>
+<span class="c1">#</span>
+<span class="c1">#   Class-wise average metrics (macro-average)</span>
+<span class="c1">#   ===============</span>
+<span class="c1">#   F-measure</span>
+<span class="c1">#     F-measure (F)     :   0.0 %</span>
+<span class="c1">#     Precision         :   0.0 %</span>
+<span class="c1">#     Recall            :   0.0 %</span>
+<span class="c1">#   Error rate</span>
+<span class="c1">#     Error rate (ER)   :  1.67</span>
+<span class="c1">#     Deletion rate     :  1.00</span>
+<span class="c1">#     Insertion rate    :  0.67</span>
+<span class="c1">#</span>
+<span class="c1">#   Class-wise metrics</span>
+<span class="c1">#   ===============</span>
+<span class="c1">#     Event label       | Nref | Nsys |    F    :   Pre   :   Rec   |  ER   :  Del  :  Ins  |</span>
+<span class="c1">#     ------------------+------+------+---------+---------+---------+-------+-------+-------+</span>
+<span class="c1">#     car               |    3 |    2 |   0.0 %     0.0 %     0.0 % |  1.67    1.00    0.67 |</span>
+</pre></div>
+</body>
+</html>
