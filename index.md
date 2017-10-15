@@ -7,7 +7,7 @@ title: Contents
 
 This web site provides online resources associated with the book.
 
-Note: In the list below, only the chapters with associated content are links.
+Note: In the list below, only some chapter names link to associated content.  The other chapters have no online content (at present).
 
 ### Chapters
 
