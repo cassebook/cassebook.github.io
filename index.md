@@ -7,10 +7,16 @@ title: Contents
 
 This web site provides online resources associated with the book.
 
+Note: In the list below, only the chapters with associated content are links.
+
 ### Chapters
 
 {% assign grouped = site.docs | group_by: 'category' %}
 {% for group in grouped %}
 {% assign items = group.items | sort: 'order' %}
+{% if group.name == 'Chapter 1' or group.name == 'Chapter 3' %}
+* {{ group.name }} {{ items.first.title }}
+{% else %}
 * {{ group.name }} [{{ items.first.title }}]({{ site.baseurl }}{{ items.first.url }})
+{% endif %}
 {% endfor %}
