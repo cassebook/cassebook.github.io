@@ -14,7 +14,7 @@ Note: In the list below, only some chapter names link to associated content.  Th
 {% assign grouped = site.docs | group_by: 'category' %}
 {% for group in grouped %}
 {% assign items = group.items | sort: 'order' %}
-{% if group.name in site.chapters %}
+{% if site.chapters contains group.name %}
 * {{ group.name }} [{{ items.first.title }}]({{ site.baseurl }}{{ items.first.url }})
 {% else %}
 * {{ group.name }} {{ items.first.title }}
