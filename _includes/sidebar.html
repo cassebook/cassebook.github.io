@@ -2,7 +2,7 @@
 <ul id="mysidebar" class="nav">
     {% assign grouped = site.docs | group_by: 'category' %}
     {% for group in grouped %}
-    {% if group.name == 'Chapter  2' or group.name == 'Chapter  6' or group.name == 'Chapter  8' or group.name == 'Chapter  9' or group.name == 'Chapter 10' or group.name == 'Chapter 11' %}
+    {% if site.chapters contains group.name %}
     <li>
       {% assign items = group.items | sort: 'order' %}
       <a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name }}</a>
