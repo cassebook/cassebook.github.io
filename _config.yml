@@ -18,7 +18,7 @@ social:
   links:
     - https://github.com/cassebook
 # Chapters with content to display
-chapters: [ "Chapter  1", "Chapter  2", "Chapter  6", "Chapter  8", "Chapter  9", "Chapter 10", "Chapter 11" ]
+chapters: [ "Chapter  2", "Chapter  6", "Chapter  8", "Chapter  9", "Chapter 10", "Chapter 11" ]
 
 # -----
 # Build
