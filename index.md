@@ -2,7 +2,7 @@
 title: Contents
 ---
 
-**Computational Analysis of Sound Scenes and Events**
+[**Computational Analysis of Sound Scenes and Events**](http://www.springer.com/us/book/9783319634494)
 (CASSE) is a book edited by Tuomas Virtanen (Tampere University of Technology), Mark Plumbley (University of Surrey), and Dan Ellis (Google Inc.).
 
 This web site provides online resources associated with the book.
