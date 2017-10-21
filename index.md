@@ -7,6 +7,8 @@ title: Contents
 
 This web site provides online resources associated with the book.
 
+The first two chapters are available as a free preview from the [Springer website](http://www.springer.com/978-3-319-63449-4).
+
 Note: In the list below, only some chapter names link to associated content.  The other chapters have no online content for the moment. 
 
 ### Chapters
