@@ -4,6 +4,14 @@ authors: Tuomas Virtanen, Mark Plumbley, and Dan Ellis
 category: Chapter  1
 order: 1
 ---
+
+**THIS PAGE IS JUST A TEMPLATE!**
+
+**FOR INFORMATION ABOUT THE BOOK SEE https://cassebook.github.io/ **
+
+
+
+
 This is an example of the companion page for a chapter.  
 It's written in [markdown](https://daringfireball.net/projects/markdown/syntax) which makes it easy to write content as a simple text file.
 
