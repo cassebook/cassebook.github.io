@@ -17,6 +17,8 @@ Tools for annotating environmental audio:
 | **Prototypes**                                   |                                                                                                                                                                      |
 | [I-SED](http://www.bongjunkim.com/ised/)         | An interactive sound event detector, see [Kim2017](http://music.cs.northwestern.edu/publications/Kim_Pardo_IUI2017.pdf)                                              |
 | [Soundscape annotation tool](http://www.ai.rug.nl/~vdlinden/annotationtool/index.html) | A tool for soundscape annotation                                                                                               |
+| [BAT](https://github.com/BlaiMelendezCatalan/BAT) | BMAT Annotation Tool, see [Melendez-Catalan2017](http://eecs.qmul.ac.uk/~keno/17.pdf)                                                        |
+| [audio-annotator](https://github.com/CrowdCurio/audio-annotator) | Audio-annotator, see [Cartwright2017](http://faculty.poly.edu/~onov/Cartwright_et_al_SONYC_CSCW_2017.pdf)                     | 
 
 ## 6.4 Datasets for Environmental Sound Classification and Detection
 
@@ -92,5 +94,4 @@ Usage examples for different tasks by using basic Python, and both sed_eval and 
 
 |                        | example code                                     | 
 | -----------------------|--------------------------------------------------|
-| *sklearn.metrics*      | -                                                |
-| *sed_eval*             | -                                                |
+| *sed_eval*             | [tag_evaluation_sedeval.py]({{ site.url }}/code/ch06/tag_evaluation_sedeval.py.html) ([download]({{ site.url }}/code/ch06/tag_evaluation_sedeval.py)) |

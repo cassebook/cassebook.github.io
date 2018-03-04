@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Simple example how to evaluate audio tagging systems with</span>
+<span class="c1"># sed_eval toolbox.</span>
+<span class="c1">#</span>
+<span class="c1"># Author: Toni Heittola (toni.heittola@tut.fi)</span>
+
+<span class="kn">import</span> <span class="nn">sed_eval</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
+
+<span class="c1"># Reference tag activity</span>
+<span class="n">reference_tag_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test1.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;cat,dog&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test2.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test3.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;bird,cat&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test4.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test5.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;bird,speech&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test6.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;dog,speech&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test7.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span>
+    <span class="p">},</span>
+<span class="p">])</span>
+
+<span class="c1"># Tag probabilities for each tag per file</span>
+<span class="n">estimated_tag_probabilities</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">ProbabilityContainer</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test1.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.2</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test1.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.99</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test1.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.88</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test1.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.01</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test2.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test2.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.3</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test2.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.8</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test2.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.1</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test3.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.7</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test3.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.6</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test3.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.4</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test3.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.3</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test4.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.323</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test4.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.6</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test4.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.56</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test4.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.4</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test5.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.8</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test5.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.7</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test5.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.45</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test5.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.43</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test6.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.9</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test6.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.53</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test6.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.83</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test6.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.95</span>
+    <span class="p">},</span>
+
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test7.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.2</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test7.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.2</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test7.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.89</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test7.wav&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;speech&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="mf">0.45</span>
+    <span class="p">},</span>
+<span class="p">])</span>
+
+<span class="c1"># Process estimations and make decisions with 0.5 threshold</span>
+<span class="n">estimated_tag_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">()</span>
+<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">estimated_tag_probabilities</span><span class="o">.</span><span class="n">unique_files</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">estimated_tag_probabilities</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">probability</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="n">estimated_tag_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="nb">file</span><span class="p">,</span>
+            <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="n">tags</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="c1"># Initialize evaluator</span>
+<span class="n">tag_evaluator</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">audio_tag</span><span class="o">.</span><span class="n">AudioTaggingMetrics</span><span class="p">(</span>
+    <span class="n">tags</span><span class="o">=</span><span class="n">reference_tag_list</span><span class="o">.</span><span class="n">unique_tags</span>
+<span class="p">)</span>
+
+<span class="c1"># Evaluate</span>
+<span class="n">tag_evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+    <span class="n">reference_tag_list</span><span class="o">=</span><span class="n">reference_tag_list</span><span class="p">,</span>
+    <span class="n">estimated_tag_list</span><span class="o">=</span><span class="n">estimated_tag_list</span><span class="p">,</span>
+    <span class="n">estimated_tag_probabilities</span><span class="o">=</span><span class="n">estimated_tag_probabilities</span>
+<span class="p">)</span>
+
+<span class="c1"># Print all metrics as report</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tag_evaluator</span><span class="p">)</span>
+
+<span class="c1"># Audio tagging metrics</span>
+<span class="c1"># ========================================</span>
+<span class="c1">#   Tags                              : 4</span>
+<span class="c1">#   Evaluated units                   : 11</span>
+<span class="c1">#</span>
+<span class="c1">#   Overall metrics (micro-average)</span>
+<span class="c1">#   ======================================</span>
+<span class="c1">#   F-measure</span>
+<span class="c1">#     F-measure (F1)                  : 72.00 %</span>
+<span class="c1">#     Precision                       : 64.29 %</span>
+<span class="c1">#     Recall                          : 81.82 %</span>
+<span class="c1">#   Equal error rate</span>
+<span class="c1">#     Equal error rate (EER)          : 18.18 %</span>
+<span class="c1">#</span>
+<span class="c1">#   Class-wise average metrics (macro-average)</span>
+<span class="c1">#   ======================================</span>
+<span class="c1">#   F-measure</span>
+<span class="c1">#     F-measure (F1)                  : 70.00 %</span>
+<span class="c1">#     Precision                       : 71.67 %</span>
+<span class="c1">#     Recall                          : 83.33 %</span>
+<span class="c1">#   Equal error rate</span>
+<span class="c1">#     Equal error rate (EER)          : 17.50 %</span>
+<span class="c1">#</span>
+<span class="c1">#   Class-wise metrics</span>
+<span class="c1">#   ======================================</span>
+<span class="c1">#     Tag               | Nref        Nsys      | F-score     Pre         Rec       | EER</span>
+<span class="c1">#     ----------------- | ---------   --------- | ---------   ---------   --------- | ---------</span>
+<span class="c1">#     bird              | 2           3         | 80.0%       66.7        100.0     | 20.0%</span>
+<span class="c1">#     cat               | 3           5         | 75.0%       60.0        100.0     | 25.0%</span>
+<span class="c1">#     dog               | 3           5         | 75.0%       60.0        100.0     | 25.0%</span>
+<span class="c1">#     speech            | 3           1         | 50.0%       100.0       33.3      | 0.0%</span>
+</pre></div>
+</body>
+</html>
